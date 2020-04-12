@@ -9,14 +9,14 @@ namespace CNA_tema1_Client
     {
         static async Task Main(string[] args)
         {
-            var input = new HelloRequest { Name = "Tim" };
-
             var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var client = new Greeter.GreeterClient(channel);
+            Console.WriteLine("Please insert your name: ");
+            string name = Console.ReadLine();
+            var response = await client.SayHelloAsync(new HelloRequest { Message = name });
 
-            var reply = await client.SayHelloAsync(input);
-
-            Console.WriteLine(reply.Message);
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }

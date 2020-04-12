@@ -17,10 +17,8 @@ namespace CNA_tema1_Server
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new HelloReply
-            {
-                Message = "Hello " + request.Name
-            });
+            Console.WriteLine("Hello " + request.Name.ToString());
+            return Task.FromResult(new HelloReply { });
         }
     }
 }
