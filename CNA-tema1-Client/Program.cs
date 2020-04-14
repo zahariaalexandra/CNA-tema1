@@ -11,9 +11,10 @@ namespace CNA_tema1_Client
         {
             var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var client = new Greeter.GreeterClient(channel);
+            
             Console.WriteLine("Please insert your name: ");
             string name = Console.ReadLine();
-            var response = await client.SayHelloAsync(new HelloRequest { Message = name });
+            await client.SayHelloAsync(new HelloRequest { Message = name });
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
